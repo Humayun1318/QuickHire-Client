@@ -1,0 +1,13 @@
+node_modules/
+.next/
+out/
+build/
+dist/
+coverage/
+.turbo/
+*.lock
+*.log
+*.pem
+.DS_Store
+.env.local
+.env.*.local
