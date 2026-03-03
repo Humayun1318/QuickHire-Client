@@ -17,36 +17,34 @@ export default function ReusableCustomSection({
   children,
 }: ReusableCustomSectionProps) {
   return (
-    <section className="py-16 md:py-24">
-      <div className="max-w-[1280px] mx-auto">
-        {/* Header */}
-        <div className="flex justify-between items-center mb-12">
-          <h2 className="font-heading text-3xl md:text-5xl font-semibold text-[#25324B]">
-            <span>{titleStart}</span>{' '}
-            <span className="text-[#26A4FF]">{titleHighlight}</span>
-          </h2>
+    <section className="py-12 sm:py-16 md:py-20 lg:py-24">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4 mb-8 sm:mb-10 md:mb-12">
+        <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-[#25324B]">
+          <span>{titleStart}</span>{' '}
+          <span className="text-[#26A4FF]">{titleHighlight}</span>
+        </h2>
 
-          <Link
-            href={linkHref}
-            className="items-center gap-2 font-semibold text-base font-sans text-[#4640DE] hover:text-accent hidden md:flex"
-          >
-            <span>{linkText}</span>
-            <span>→</span>
-          </Link>
-        </div>
-
-        {/* Cards Area */}
-        {children}
-
-        {/* Mobile Link */}
         <Link
           href={linkHref}
-          className="flex items-center gap-2 font-semibold text-base font-sans text-[#4640DE] hover:text-accent md:hidden mt-8 justify-start"
+          className="items-center gap-2 font-semibold text-sm sm:text-base font-sans text-[#4640DE] hover:text-accent hidden md:flex"
         >
           <span>{linkText}</span>
           <span>→</span>
         </Link>
       </div>
+
+      {/* Cards Area */}
+      {children}
+
+      {/* Mobile Link */}
+      <Link
+        href={linkHref}
+        className="flex items-center gap-2 font-semibold text-sm sm:text-base font-sans text-[#4640DE] hover:text-accent md:hidden mt-6 sm:mt-8 justify-start"
+      >
+        <span>{linkText}</span>
+        <span>→</span>
+      </Link>
     </section>
   );
 }

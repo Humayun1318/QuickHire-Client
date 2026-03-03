@@ -49,21 +49,28 @@ export default function JobFeatures() {
       linkText="Show all jobs"
       linkHref="/jobs"
     >
-      <section className=" bg-white">
-        <div className="max-w-[1288px] mx-auto">
-          {/* Mobile Scroll */}
-          <div className="flex gap-6 overflow-x-auto scrollbar-hide md:hidden pb-4">
-            {jobs.map((job) => (
-              <JobCard key={job.id} {...job} />
-            ))}
-          </div>
+      <section className="bg-white">
+        {/* Mobile Scroll - Horizontal Scroll on Small Screens */}
+        <div className="flex gap-4 sm:gap-5 overflow-x-auto scrollbar-hide md:hidden pb-4 sm:pb-5 -mx-4 sm:-mx-0 px-4 sm:px-0">
+          {jobs.map((job) => (
+            <div key={job.id} className="min-w-[280px] sm:min-w-[300px]">
+              <JobCard {...job} />
+            </div>
+          ))}
+        </div>
 
-          {/* Desktop Grid */}
-          <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-6">
-            {jobs.map((job) => (
-              <JobCard key={job.id} {...job} />
-            ))}
-          </div>
+        {/* Tablet Grid (2 columns) */}
+        <div className="hidden md:grid lg:hidden grid-cols-2 gap-5">
+          {jobs.map((job) => (
+            <JobCard key={job.id} {...job} />
+          ))}
+        </div>
+
+        {/* Desktop Grid (4 columns) */}
+        <div className="hidden lg:grid grid-cols-4 gap-6">
+          {jobs.map((job) => (
+            <JobCard key={job.id} {...job} />
+          ))}
         </div>
       </section>
     </ReusableCustomSection>

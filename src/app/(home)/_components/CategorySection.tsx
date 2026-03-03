@@ -1,4 +1,5 @@
-import { CategoryCard } from './CategoryCard';
+
+import { CategoryCard } from '../../../components/CategoryCard';
 import ReusableCustomSection from '@/components/ReusableCustomSection';
 
 const categories = [
@@ -48,7 +49,7 @@ export default function CategorySection() {
       linkText="Show all jobs"
       linkHref="/jobs"
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
         {categories.map((category) => (
           <CategoryCard
             key={category.id}

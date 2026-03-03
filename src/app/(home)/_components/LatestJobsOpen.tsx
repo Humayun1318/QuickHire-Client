@@ -4,8 +4,8 @@ import ReusableCustomSection from '@/components/ReusableCustomSection';
 export default function LatestJobsOpen() {
   return (
     <ReusableCustomSection
-      titleStart="Features"
-      titleHighlight="Jobs"
+      titleStart="Latest"
+      titleHighlight="Jobs open"
       linkText="Show all jobs"
       linkHref="/jobs"
     >
