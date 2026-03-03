@@ -117,6 +117,28 @@ npx shadcn-ui@latest add [component-name]
 
 Example components: button, card, dialog, dropdown-menu, input, label, select, etc.
 
+## API Handling & Data Fetching
+
+This project uses **TanStack React Query** for server communication, caching, and background
+updates. It provides:
+
+1. Declarative data fetching with `useQuery`/`useMutation`.
+2. Built-in loading and error states.
+3. DevTools for inspecting queries (`ReactQueryDevtools`, enabled in `Providers`).
+
+The helper `fetcher<T>(url)` in `src/lib/api.ts` wraps `fetch` with error handling.
+Example usage is in `src/app/page.tsx` where the home page fetches job listings.
+
+### Global Loading & Error Handling
+
+Next.js App Router allows you to define `loading.tsx` and `error.tsx` under `src/app`
+for application-wide fallbacks. These files show a spinner or error message during page
+transitions or when an unhandled error bubbles up.
+
+- `src/app/loading.tsx` shows a centered animation while segments are loading.
+- `src/app/error.tsx` displays the error message and offers a "Try again" button
+  which calls the provided `reset()` callback to retry rendering.
+
 ## Development Best Practices
 
 1. **Type Safety** - Always use TypeScript for new files
