@@ -1,26 +1,50 @@
-import { Job } from '@/types';
-import { Card, CardHeader, CardContent, CardFooter } from './Card';
+import Image from 'next/image';
 
-export function JobCard({ job }: { job: Job }) {
+interface JobCardProps {
+  icon: string;
+  type: string;
+  title: string;
+  location: string;
+  description: string;
+  category: string;
+}
+
+export function JobCard({
+  icon,
+  type,
+  title,
+  location,
+  description,
+  category,
+}: JobCardProps) {
   return (
-    <Card className="max-w-md mx-auto">
-      <CardHeader>
-        <h2 className="text-xl font-bold">{job.title}</h2>
-        <p className="text-sm text-gray-500">{job.company}</p>
-      </CardHeader>
-      <CardContent>
-        <p className="text-gray-700 dark:text-gray-300">{job.description}</p>
-      </CardContent>
-      <CardFooter>
-        <div className="flex justify-between items-center w-full">
-          <span className="text-sm text-gray-600 dark:text-gray-400">
-            {job.location}
-          </span>
-          <span className="text-sm font-semibold">
-            ${job.salary.toLocaleString()}
-          </span>
+    <div className="min-w-[280px] bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg transition-shadow">
+      {/* Top Row */}
+      <div className="flex justify-between items-start mb-4">
+        <div className="w-10 h-10 relative">
+          <Image src={icon} alt={title} fill className="object-contain" />
         </div>
-      </CardFooter>
-    </Card>
+
+        <span className="text-base font-normal px-3 py-1 border border-[#4640DE] text-[#4640DE] rounded-md">
+          {type}
+        </span>
+      </div>
+
+      {/* Title */}
+      <h3 className="text-lg font-semibold text-[#25324B] mb-1">{title}</h3>
+
+      {/* Location */}
+      <p className="text-base font-normal text-[#515B6F] mb-3">{location}</p>
+
+      {/* Description */}
+      <p className="text-base font-normal  text-[#7C8493] line-clamp-2 mb-4">
+        {description}
+      </p>
+
+      {/* Category */}
+      <span className="inline-block bg-green-100 text-green-700 text-xs font-medium px-3 py-1 rounded-full">
+        {category}
+      </span>
+    </div>
   );
 }

@@ -60,7 +60,7 @@ export default function Banner() {
 
         {/* Banner Content - Takes remaining height */}
         <div className="flex-1 w-full mt-4 md:mt-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 h-full max-w-[1280px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 h-full max-w-[1288px] mx-auto">
             {/* LEFT SIDE - Text Content */}
             <div className="flex items-center px-4 md:px-0 md:pr-8 z-20">
               <div className="space-y-6 md:space-y-8 w-full">

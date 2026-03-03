@@ -9,7 +9,7 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="w-full relative bg-transparent">
+    <nav className="w-full bg-transparent ">
       <div className="px-4 md:px-0 max-w-[1280px] mx-auto">
         <div className="flex justify-between items-center h-20">
           {/* LEFT SIDE: Logo + Navigation Links */}
