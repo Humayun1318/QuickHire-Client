@@ -3,25 +3,23 @@
 import Image from 'next/image';
 import Navbar from '../../../components/shared/Navbar';
 import { useState } from 'react';
-import { Job } from '@/types';
-
 import { Search, MapPin, ChevronDown } from 'lucide-react';
-import { fetcher } from '@/lib/api';
-import { QueryFunctionContext } from '@tanstack/react-query';
 
-const fetchJobs = async (
-  context: QueryFunctionContext<[string, { search: string; location: string }]>
-): Promise<Job[]> => {
-  const [_key, { search, location }] = context.queryKey;
-  const params = new URLSearchParams();
-  if (search) params.append('search', search);
-  if (location) params.append('location', location);
-  return fetcher<Job[]>(`/api/jobs?${params.toString()}`);
-};
+import { useRouter } from 'next/navigation';
 
 export default function Banner() {
   const [search, setSearch] = useState('');
   const [location, setLocation] = useState('');
+  const router = useRouter();
+
+  // In your banner component where you have search inputs
+  const handleSearch = () => {
+    const params = new URLSearchParams();
+    if (search) params.append('search', search);
+    if (location) params.append('location', location);
+
+    router.push(`/jobs?${params.toString()}`);
+  };
 
   return (
     <div className="relative md:h-[794px] w-full ">
@@ -129,7 +127,10 @@ export default function Banner() {
                       </div>
 
                       {/* Search button */}
-                      <button className="bg-[#4640DE] hover:bg-accent/90 text-white font-sans font-medium px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-lg transition-colors whitespace-nowrap text-sm sm:text-base">
+                      <button
+                        className="bg-[#4640DE] hover:bg-[#4640DE]/90 text-white font-sans font-medium px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-lg transition-colors whitespace-nowrap text-sm sm:text-base"
+                        onClick={() => handleSearch()}
+                      >
                         Search my job
                       </button>
                     </div>

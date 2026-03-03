@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Epilogue, Plus_Jakarta_Sans } from 'next/font/google';
 import '@/styles/globals.css';
 import { Providers } from '@/providers';
+import { Toaster } from 'react-hot-toast';
 
 // Configure Epilogue (for body text/descriptions)
 const epilogue = Epilogue({
@@ -60,6 +61,39 @@ export default function RootLayout({
       <body>
         <Providers>
           <main>{children}</main>
+          <Toaster
+            position="top-right"
+            toastOptions={{
+              duration: 4000,
+              style: {
+                background: '#fff',
+                color: '#363636',
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+                borderRadius: '8px',
+                padding: '12px 16px',
+                fontSize: '14px',
+                fontFamily: 'sans-serif',
+              },
+              success: {
+                icon: '✅',
+                style: {
+                  border: '1px solid #10b981',
+                },
+              },
+              error: {
+                icon: '❌',
+                style: {
+                  border: '1px solid #ef4444',
+                },
+              },
+              loading: {
+                icon: '⏳',
+                style: {
+                  border: '1px solid #4640DE',
+                },
+              },
+            }}
+          />
         </Providers>
       </body>
     </html>
